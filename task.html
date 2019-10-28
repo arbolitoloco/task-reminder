@@ -24,41 +24,43 @@
         var mins = d.getMinutes();
         var new_task;
         var pomodoros = 1;
-        switch (hours) {
-            case >11: // 9:30 early morning
-                new_task = "Programar/resolver problemas";
-                pomodoros = 4;
-                break;
-            case 11: // 11:30 late morning
-                new_task = "Documentação";
-                pomodoros = 2;
-                break;
-            case 12: // 12:30 lunch hour
-                new_task = "Emails";
-                break;
-            case 13:
-                if (mins > 30) { // 13H early afternoon
-                    new_task = "Gerenciar issues";
-                } else { // 13:30 mid afternoon
-                    new_task = "Leitura/Tutoriais";
+        if (hours > 11) { // 9:30 early morning
+            new_task = "Programar/resolver problemas";
+            pomodoros = 4;
+        } else {
+            switch (hours) {
+                case 11: // 11:30 late morning
+                    new_task = "Documentação";
                     pomodoros = 2;
-                };
-                break;
-            case 16: // 16:30 late afternoon
-                new_task = "Braindump";
-                break;
-            case 17: // late afternoon
-                new_task = "Desacelerar e planejar o dia seguinte";
-                break;
-            case 18: // go home!
-                new_task = "Vá para casa aproveitar a vida!";
-                pomodoros = "MUITOS";
-                break;
-            default:
-                new_task = "Carpe diem!";
-                pomodoros = "forget";
+                    break;
+                case 12: // 12:30 lunch hour
+                    new_task = "Emails";
+                    break;
+                case 13:
+                    if (mins > 30) { // 13H early afternoon
+                        new_task = "Gerenciar issues";
+                    } else { // 13:30 mid afternoon
+                        new_task = "Leitura/Tutoriais";
+                        pomodoros = 2;
+                    };
+                    break;
+                case 16: // 16:30 late afternoon
+                    new_task = "Braindump";
+                    break;
+                case 17: // late afternoon
+                    new_task = "Desacelerar e planejar o dia seguinte";
+                    break;
+                case 18: // go home!
+                    new_task = "Vá para casa aproveitar a vida!";
+                    pomodoros = "MUITOS";
+                    break;
+                default:
+                    new_task = "Carpe diem!";
+                    pomodoros = "forget";
+            };
 
-        };
+        }
+
         document.getElementById("task").innerHTML = '<h1>' + new_task + '</h1><h3>' + pomodoros + ' pomodoros</h3>';
 
     };
