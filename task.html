@@ -24,7 +24,7 @@
         var mins = d.getMinutes();
         var new_task;
         var pomodoros = 1;
-        if (hours > 11) { // 9:30 early morning
+        if (hours < 11) { // 9:30 early morning
             new_task = "Programar/resolver problemas";
             pomodoros = 4;
         } else {
