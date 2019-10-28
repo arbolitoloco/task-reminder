@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="task.js" async></script>
+    <title>Your next task!</title>
+</head>
+
+<body>
+    <label id="lblGreetings"></label>
+    <div class="centered">
+        <div id="task" class="neon">
+        </div>
+    </div>
+</body>
+<script>
+    function setTask() {
+        var d = new Date();
+        var hours = d.getHours();
+        var mins = d.getMinutes();
+        var new_task;
+        var pomodoros = 1;
+        switch (hours) {
+            case 9: // 9:30 early morning
+                new_task = "Programar/resolver problemas";
+                pomodoros = 4;
+                break;
+            case 11: // 11:30 late morning
+                new_task = "Documentação";
+                pomodoros = 2;
+                break;
+            case 12: // 12:30 lunch hour
+                new_task = "Emails";
+                break;
+            case 13:
+                if (mins > 30) { // 13H early afternoon
+                    new_task = "Gerenciar issues";
+                } else { // 13:30 mid afternoon
+                    new_task = "Leitura/Tutoriais";
+                    pomodoros = 2;
+                };
+                break;
+            case 16: // 16:30 late afternoon
+                new_task = "Braindump";
+                break;
+            case 17: // late afternoon
+                new_task = "Desacelerar e planejar o dia seguinte";
+                break;
+            case 18: // go home!
+                new_task = "Vá para casa aproveitar a vida!";
+                pomodoros = "MUITOS";
+                break;
+            default:
+                new_task = "Carpe diem!";
+                pomodoros = "forget";
+
+        };
+        document.getElementById("task").innerHTML = '<h1>' + new_task + '</h1><h3>' + pomodoros + ' pomodoros</h3>';
+
+    };
+
+    function greetUser() {
+        var myDate = new Date();
+        var hrs = myDate.getHours();
+
+        var greet;
+
+        if (hrs < 12)
+            greet = 'Good Morning';
+        else if (hrs >= 12 && hrs <= 17)
+            greet = 'Good Afternoon';
+        else if (hrs >= 17 && hrs <= 24)
+            greet = 'Good Evening';
+
+        document.getElementById('lblGreetings').innerHTML =
+            '<b>' + greet + '</b>';
+    }
+    window.onload = setTask();
+    window.onload = greetUser();
+</script>
+
+</html>
